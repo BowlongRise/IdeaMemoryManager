@@ -4,10 +4,10 @@
 
 **An industrial-grade, non-destructive memory optimizer & anti-freeze guardian tailored for IntelliJ IDEA, Spring Boot microservices, and Node.js frontend tooling.**
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![.NET Version](https://img.shields.io/badge/.NET-8.0-purple.svg)](https://dotnet.microsoft.com)
-[![Platform](https://img.shields.io/badge/Platform-Windows-0078D6.svg)](https://microsoft.com/windows)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+[![License: MIT](assets/badges/license.svg)](LICENSE)
+[![.NET Version](assets/badges/dotnet.svg)](https://dotnet.microsoft.com)
+[![Platform](assets/badges/platform.svg)](https://microsoft.com/windows)
+[![PRs Welcome](assets/badges/prs.svg)](CONTRIBUTING.md)
 
 [简体中文文档](README_CN.md) · [Features](#-features) · [How it Works](#-how-it-works) · [Architecture](#-architecture) · [Quick Start](#-quick-start)
 

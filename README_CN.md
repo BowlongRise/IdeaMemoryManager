@@ -4,10 +4,10 @@
 
 **专为全栈与微服务开发者打造的工业级、无损内存优化与防卡死守护工具**
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![.NET Version](https://img.shields.io/badge/.NET-8.0-purple.svg)](https://dotnet.microsoft.com)
-[![Platform](https://img.shields.io/badge/Platform-Windows-0078D6.svg)](https://microsoft.com/windows)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+[![License: MIT](assets/badges/license.svg)](LICENSE)
+[![.NET Version](assets/badges/dotnet.svg)](https://dotnet.microsoft.com)
+[![Platform](assets/badges/platform.svg)](https://microsoft.com/windows)
+[![PRs Welcome](assets/badges/prs.svg)](CONTRIBUTING.md)
 
 [English Documentation](README.md) · [功能特性](#-核心特性) · [工作原理](#-核心工作原理) · [架构设计](#-架构设计) · [快速开始](#-快速开始)
 
