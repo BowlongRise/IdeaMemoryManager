@@ -26,11 +26,24 @@ jobs:
         run: |
           dotnet publish -c Release -r win-x64 --self-contained false /p:PublishSingleFile=true -o ./release
 
+      - name: Extract Release Notes from CHANGELOG
+        shell: pwsh
+        run: |
+          $tag = "${{ github.ref_name }}"
+          if (Test-Path "CHANGELOG.md") {
+              $content = Get-Content -Path "CHANGELOG.md" -Raw
+              if ($content -match "(?s)(## \[$tag\].*?)(?=\r?\n## \[|$)") {
+                  $notes = $matches[1].Trim()
+                  $notes | Out-File -FilePath "release_notes.md" -Encoding utf8
+                  Write-Host "Successfully extracted release notes for $tag"
+              }
+          }
+
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: ./release/IdeaMemoryManager.exe
-          generate_release_notes: true
+          body_path: release_notes.md
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
