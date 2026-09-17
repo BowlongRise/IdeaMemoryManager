@@ -93,8 +93,8 @@ IdeaMemoryManager/
 ├── IdeaMemoryManager.csproj# .NET 8 工程项目文件
 ├── LICENSE                 # MIT 开源协议
 ├── CONTRIBUTING.md         # 社区贡献指引
-├── README.md               # 中文主文档
-├── README_EN.md            # 英文官方文档
+├── README.md               # 英文官方主文档 (默认)
+├── README_CN.md            # 简体中文说明文档
 └── build.bat               # 本地自动化构建脚本
 ```
 

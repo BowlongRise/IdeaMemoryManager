@@ -83,8 +83,8 @@ IdeaMemoryManager/
 ├── IdeaMemoryManager.csproj# .NET 8 Project file
 ├── LICENSE                 # MIT License
 ├── CONTRIBUTING.md         # Contribution guidelines
-├── README.md               # Chinese documentation
-├── README_EN.md            # English documentation
+├── README.md               # English documentation (default)
+├── README_CN.md            # Chinese documentation
 └── build.bat               # One-click Windows build script
 ```
 
