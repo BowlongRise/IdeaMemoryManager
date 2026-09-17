@@ -93,7 +93,7 @@ IdeaMemoryManager/
 ## 🚀 Quick Start
 
 ### Option A: Run Precompiled Binary
-Run `IdeaMemoryCleaner.exe` directly from the release output.
+Run `IdeaMemoryManager.exe` directly from the release output.
 
 ### Option B: Build from Source
 Requires [.NET 8.0 SDK](https://dotnet.microsoft.com/download/dotnet/8.0).
@@ -107,7 +107,7 @@ cd IdeaMemoryManager
 dotnet build -c Release
 
 # 3. Launch application
-./bin/Release/net8.0-windows/IdeaMemoryCleaner.exe
+./bin/Release/net8.0-windows/IdeaMemoryManager.exe
 ```
 
 Or execute `build.bat` on Windows.

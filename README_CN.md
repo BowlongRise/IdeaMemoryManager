@@ -103,7 +103,7 @@ IdeaMemoryManager/
 ## 🚀 快速开始
 
 ### 方式 A：运行预构建版本
-直接运行发布产物 `IdeaMemoryCleaner.exe` 即可使用。
+直接运行发布产物 `IdeaMemoryManager.exe` 即可使用。
 
 ### 方式 B：源码构建
 要求环境：[.NET 8.0 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)。
@@ -117,7 +117,7 @@ cd IdeaMemoryManager
 dotnet build -c Release
 
 # 3. 运行程序
-./bin/Release/net8.0-windows/IdeaMemoryCleaner.exe
+./bin/Release/net8.0-windows/IdeaMemoryManager.exe
 ```
 
 或直接在 Windows 环境中双击运行 `build.bat`。

@@ -17,11 +17,11 @@ if %errorlevel% neq 0 (
 
 echo.
 echo [2/2] 正在同步产物到桌面...
-powershell -NoProfile -Command "$WshShell = New-Object -ComObject WScript.Shell; $d = [Environment]::GetFolderPath('Desktop'); Copy-Item -Path 'bin\Release\net8.0-windows\IdeaMemoryCleaner.exe' -Destination (Join-Path $d 'IDEA内存管理.exe') -Force; $s = $WshShell.CreateShortcut((Join-Path $d 'IDEA内存管理.lnk')); $s.TargetPath = (Convert-Path 'bin\Release\net8.0-windows\IdeaMemoryCleaner.exe'); $s.WorkingDirectory = (Convert-Path 'bin\Release\net8.0-windows'); $s.Save()" >nul 2>nul
+powershell -NoProfile -Command "$WshShell = New-Object -ComObject WScript.Shell; $d = [Environment]::GetFolderPath('Desktop'); Copy-Item -Path 'bin\Release\net8.0-windows\IdeaMemoryManager.exe' -Destination (Join-Path $d 'IDEA内存管理.exe') -Force; $s = $WshShell.CreateShortcut((Join-Path $d 'IDEA内存管理.lnk')); $s.TargetPath = (Convert-Path 'bin\Release\net8.0-windows\IdeaMemoryManager.exe'); $s.WorkingDirectory = (Convert-Path 'bin\Release\net8.0-windows'); $s.IconLocation = (Convert-Path 'assets\app.ico'); $s.Save()" >nul 2>nul
 
 echo.
 echo 构建成功！
-echo - 程序产物: bin\Release\net8.0-windows\IdeaMemoryCleaner.exe
+echo - 程序产物: bin\Release\net8.0-windows\IdeaMemoryManager.exe
 echo - 桌面启动: %USERPROFILE%\Desktop\IDEA内存管理.exe
 echo ========================================================
 echo.

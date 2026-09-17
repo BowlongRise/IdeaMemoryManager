@@ -6,7 +6,7 @@
     <Nullable>disable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
-    <AssemblyName>IdeaMemoryCleaner</AssemblyName>
+    <AssemblyName>IdeaMemoryManager</AssemblyName>
     <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
     <ApplicationIcon>assets\app.ico</ApplicationIcon>
     <Version>1.0.0</Version>

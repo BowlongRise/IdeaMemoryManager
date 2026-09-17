@@ -25,15 +25,12 @@ jobs:
       - name: Build and Publish Single-File Binary
         run: |
           dotnet publish -c Release -r win-x64 --self-contained false /p:PublishSingleFile=true -o ./release
-          Copy-Item -Path "./release/IdeaMemoryCleaner.exe" -Destination "./release/IdeaMemoryManager.exe"
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: |
-            ./release/IdeaMemoryCleaner.exe
-            ./release/IdeaMemoryManager.exe
+          files: ./release/IdeaMemoryManager.exe
           generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
