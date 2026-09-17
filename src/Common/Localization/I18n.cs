@@ -18,7 +18,6 @@ namespace IdeaMemoryManager.Common.Localization
 
         static I18n()
         {
-            // Auto-detect based on system culture
             CurrentLanguage = CultureInfo.CurrentUICulture.Name.StartsWith("zh", StringComparison.OrdinalIgnoreCase)
                 ? AppLanguage.Chinese
                 : AppLanguage.English;
@@ -63,7 +62,7 @@ namespace IdeaMemoryManager.Common.Localization
             ["IdeaHost"] = new()
             {
                 [AppLanguage.English] = "• IDE Host: {0}",
-                [AppLanguage.Chinese] = "• IDEA 宿主：{0}"
+                [AppLanguage.Chinese] = "• IDE 宿主：{0}"
             },
             ["JavaServices"] = new()
             {
@@ -159,6 +158,46 @@ namespace IdeaMemoryManager.Common.Localization
             {
                 [AppLanguage.English] = "Every 2 hours",
                 [AppLanguage.Chinese] = "每 2 小时"
+            },
+            ["IdleAwareDefer"] = new()
+            {
+                [AppLanguage.English] = "Active typing/compilation detected, deferred auto-clean...",
+                [AppLanguage.Chinese] = "检测到活跃输入或编译，已智能顺延清理..."
+            },
+            ["ShowTopology"] = new()
+            {
+                [AppLanguage.English] = "▲ Process Topology ({0})",
+                [AppLanguage.Chinese] = "▲ 进程拓扑管理 ({0})"
+            },
+            ["HideTopology"] = new()
+            {
+                [AppLanguage.English] = "▼ Collapse Details",
+                [AppLanguage.Chinese] = "▼ 收起拓扑详情"
+            },
+            ["WhitelistAdd"] = new()
+            {
+                [AppLanguage.English] = "🛡️ Add to Whitelist (Skip clean)",
+                [AppLanguage.Chinese] = "🛡️ 加入白名单 (永久跳过清理)"
+            },
+            ["WhitelistRemove"] = new()
+            {
+                [AppLanguage.English] = "Remove from Whitelist",
+                [AppLanguage.Chinese] = "从白名单中移除"
+            },
+            ["WhitelistedBadge"] = new()
+            {
+                [AppLanguage.English] = "[Whitelisted]",
+                [AppLanguage.Chinese] = "[已加白]"
+            },
+            ["JvmTelemetryTitle"] = new()
+            {
+                [AppLanguage.English] = "🔬 JVM Heap Telemetry",
+                [AppLanguage.Chinese] = "🔬 JVM 堆内深度遥测"
+            },
+            ["Trend60s"] = new()
+            {
+                [AppLanguage.English] = "Memory Trend (60s)",
+                [AppLanguage.Chinese] = "60秒内存走势"
             }
         };
     }

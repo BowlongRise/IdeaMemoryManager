@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using IdeaMemoryManager.Common.Localization;
 
 namespace IdeaMemoryManager.Config
@@ -19,5 +20,9 @@ namespace IdeaMemoryManager.Config
         public long TotalSavedBytes { get; set; } = 0;
         public int TotalCleanCount { get; set; } = 0;
         public AppLanguage Language { get; set; } = AppLanguage.English;
+
+        public bool IdleAwareEnabled { get; set; } = true;
+        public int IdleThresholdSeconds { get; set; } = 25;
+        public HashSet<string> Whitelist { get; set; } = new(StringComparer.OrdinalIgnoreCase);
     }
 }

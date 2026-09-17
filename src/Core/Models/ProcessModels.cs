@@ -18,6 +18,20 @@ namespace IdeaMemoryManager.Core.Models
         public ProcessCategory Category { get; set; }
         public long WorkingSetBytes { get; set; }
         public Process ProcessInstance { get; set; }
+        public bool IsWhitelisted { get; set; }
+        public bool IsSelected { get; set; } = true;
+    }
+
+    public class JvmHeapInfo
+    {
+        public int Pid { get; set; }
+        public long EdenUsedBytes { get; set; }
+        public long EdenCapacityBytes { get; set; }
+        public long OldGenUsedBytes { get; set; }
+        public long OldGenCapacityBytes { get; set; }
+        public long MetaspaceUsedBytes { get; set; }
+        public long MetaspaceCapacityBytes { get; set; }
+        public bool Available { get; set; }
     }
 
     public class MemoryStats
@@ -28,6 +42,7 @@ namespace IdeaMemoryManager.Core.Models
         public long NodeBytes { get; set; }
         public int TotalProcesses => Targets.Count;
         public List<ProcessTarget> Targets { get; set; } = new();
+        public List<JvmHeapInfo> JvmHeaps { get; set; } = new();
         public Process MainIdeaProcess { get; set; }
     }
 

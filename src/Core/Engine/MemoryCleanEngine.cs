@@ -5,6 +5,8 @@ using IdeaMemoryManager.Config;
 using IdeaMemoryManager.Core.Models;
 using IdeaMemoryManager.Core.Scanner;
 using IdeaMemoryManager.Core.Strategy;
+using IdeaMemoryManager.Core.Telemetry;
+using IdeaMemoryManager.Interop;
 
 namespace IdeaMemoryManager.Core.Engine
 {
@@ -51,6 +53,9 @@ namespace IdeaMemoryManager.Core.Engine
                     ConfigManager.RecordSavedBytes(report.SavedBytes);
                 }
 
+                // 4. Zero Self-Footprint: Trim own working set immediately after optimization
+                TriggerSelfTrim();
+
                 Logger.Info($"Optimized {report.AffectedProcesses} processes. Saved: {ByteSizeFormatter.Format(report.SavedBytes)} in {report.ElapsedMilliseconds}ms");
             }
             catch (Exception ex)
@@ -61,6 +66,22 @@ namespace IdeaMemoryManager.Core.Engine
             }
 
             return report;
+        }
+
+        public JvmHeapInfo QueryMainJvmHeap(Process ideaProc)
+        {
+            if (ideaProc == null) return new JvmHeapInfo();
+            string jcmd = _jvmGcStrategy.GetResolvedJcmdPath(ideaProc);
+            return JvmTelemetryService.CollectHeapInfo(ideaProc.Id, jcmd);
+        }
+
+        public void TriggerSelfTrim()
+        {
+            try
+            {
+                NativeMethods.EmptyWorkingSet(Process.GetCurrentProcess().Handle);
+            }
+            catch { }
         }
     }
 }

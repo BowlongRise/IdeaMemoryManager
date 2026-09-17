@@ -8,6 +8,16 @@ namespace IdeaMemoryManager.Interop
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
 
+        [StructLayout(LayoutKind.Sequential)]
+        public struct LASTINPUTINFO
+        {
+            public uint cbSize;
+            public uint dwTime;
+        }
+
+        [DllImport("user32.dll")]
+        public static extern bool GetLastInputInfo(ref LASTINPUTINFO plii);
+
         [DllImport("psapi.dll", SetLastError = true)]
         public static extern int EmptyWorkingSet(IntPtr hwProc);
 

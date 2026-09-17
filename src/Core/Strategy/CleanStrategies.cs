@@ -20,7 +20,9 @@ namespace IdeaMemoryManager.Core.Strategy
     public class JvmGcStrategy : ICleanStrategy
     {
         public string Name => "JVM Deep Garbage Collection";
-        private string cachedJcmdPath;
+        private string _cachedJcmdPath;
+
+        public string GetResolvedJcmdPath(Process ideaProc) => ResolveJcmdPath(ideaProc);
 
         public void Execute(MemoryStats stats)
         {
@@ -33,6 +35,9 @@ namespace IdeaMemoryManager.Core.Strategy
 
             foreach (var target in stats.Targets)
             {
+                // Skip whitelisted or unselected processes
+                if (target.IsWhitelisted || !target.IsSelected) continue;
+
                 if (target.Category == ProcessCategory.IdeaHost || target.Category == ProcessCategory.JavaService)
                 {
                     try
@@ -53,13 +58,13 @@ namespace IdeaMemoryManager.Core.Strategy
                     }
                 }
             }
-            Thread.Sleep(300);
+            Thread.Sleep(250);
         }
 
         private string ResolveJcmdPath(Process ideaProc)
         {
-            if (!string.IsNullOrEmpty(cachedJcmdPath) && File.Exists(cachedJcmdPath))
-                return cachedJcmdPath;
+            if (!string.IsNullOrEmpty(_cachedJcmdPath) && File.Exists(_cachedJcmdPath))
+                return _cachedJcmdPath;
 
             try
             {
@@ -69,12 +74,13 @@ namespace IdeaMemoryManager.Core.Strategy
                     string ideaExe = ideaProc.MainModule?.FileName;
                     if (!string.IsNullOrEmpty(ideaExe))
                     {
-                        string ideaHome = Path.GetDirectoryName(Path.GetDirectoryName(ideaExe));
+                        string binDir = Path.GetDirectoryName(ideaExe);
+                        string ideaHome = Path.GetDirectoryName(binDir);
                         string jcmdCandidate = Path.Combine(ideaHome, "jbr", "bin", "jcmd.exe");
                         if (File.Exists(jcmdCandidate))
                         {
-                            cachedJcmdPath = jcmdCandidate;
-                            return cachedJcmdPath;
+                            _cachedJcmdPath = jcmdCandidate;
+                            return _cachedJcmdPath;
                         }
                     }
                 }
@@ -88,8 +94,8 @@ namespace IdeaMemoryManager.Core.Strategy
                 string candidate = Path.Combine(javaHome, "bin", "jcmd.exe");
                 if (File.Exists(candidate))
                 {
-                    cachedJcmdPath = candidate;
-                    return cachedJcmdPath;
+                    _cachedJcmdPath = candidate;
+                    return _cachedJcmdPath;
                 }
             }
 
@@ -108,6 +114,9 @@ namespace IdeaMemoryManager.Core.Strategy
         {
             foreach (var target in stats.Targets)
             {
+                // Skip whitelisted or unselected processes
+                if (target.IsWhitelisted || !target.IsSelected) continue;
+
                 try
                 {
                     var p = target.ProcessInstance;
@@ -120,7 +129,7 @@ namespace IdeaMemoryManager.Core.Strategy
                 }
                 catch { }
             }
-            Thread.Sleep(200);
+            Thread.Sleep(150);
         }
     }
 }
